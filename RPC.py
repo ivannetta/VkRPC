@@ -6,6 +6,7 @@ import time
 import os
 from colorama import Fore, Back, Style
 import ctypes
+from tabulate import tabulate
 
 cfp = "config.txt"
 
@@ -36,7 +37,7 @@ def set_cmd_window_size(width, height):
     ctypes.windll.kernel32.SetConsoleWindowInfo(handle, True, ctypes.byref(rect))
 
 
-width, height = 43, 20
+width, height = 43, 21
 set_cmd_window_size(width, height)
 
 RPC = Presence(client_id="1184547216287862844")
@@ -53,8 +54,6 @@ def pro():
 ░╚████╔╝░██╔═██╗░  ██╔══██╗██╔═══╝░██║░░██╗
 ░░╚██╔╝░░██║░╚██╗  ██║░░██║██║░░░░░╚█████╔╝
 ░░░╚═╝░░░╚═╝░░╚═╝  ╚═╝░░╚═╝╚═╝░░░░░░╚════╝░
-
-
 
     """
         + Fore.WHITE
@@ -102,11 +101,20 @@ while True:
                     owner_id = match.group(3)
                     clear()
                     pro()
-                    print(f"Artist: {artist}")
-                    print(f"Title: {title}")
-                    print(f"Duration: {duration}")
-                    print(f"Audio ID: {audio_id}")
-                    print(f"Owner ID: {owner_id}")
+
+                    data = [
+                        ["Artist", artist],
+                        ["Title", title],
+                        ["Duration", duration],
+                        ["Audio ID", audio_id],
+                        ["Owner ID", owner_id],
+                    ]
+
+                    table = tabulate(
+                        data, tablefmt="rounded_grid", numalign="center", stralign="center"
+                    )
+
+                    print(table)
 
                     if audio_id == old_audio_id:
                         time.sleep(15)
@@ -116,12 +124,12 @@ while True:
                     titleReady = requests.get(
                         f"https://vk.com/audio{owner_id}_{audio_id}", headers=headers
                     )
+
                     imgSoup = BeautifulSoup(titleReady.content, "html.parser")
 
                     imageUrl = DEFAULT_LARGE_IMAGE_URL
                     img = imgSoup.select_one("div.AudioPlaylistSnippet__cover[style]")
                     if img:
-                        print(img["style"].split("'")[1])
                         imageUrl = img["style"].split("'")[1]
                     RPC.update(
                         details=f"Listening to: {artist + ' ' + title}",
@@ -131,7 +139,6 @@ while True:
                         large_text="vk",
                         small_text="ivan",
                     )
-                    print("rpc updated")
                 else:
                     print("zesty error occurred couldent find regex thing")
 
