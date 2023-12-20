@@ -1,2 +1,13 @@
 # VkRPC
-discord rpc with vkontakte music
+
+A simple script to show VK music on Discord RPC.
+
+![Example](/image/image.png?raw=true "Example")
+
+## Installation
+
+1. Download halal script
+
+2. Edit config.txt and put ur vk username
+
+3. Launch the Python script for halal Discord RPC.
