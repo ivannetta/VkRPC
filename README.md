@@ -8,8 +8,6 @@ A simple script to show VK music on Discord RPC.
 
 1. Download halal script
 
-2. Edit config.txt and put ur vk username
-
 3. Launch the Python script for halal Discord RPC.
 
 thanks alot to dottik for teaching me on how to scrape stuff
