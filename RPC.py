@@ -99,6 +99,10 @@ while True:
                     duration = match.group(5)
                     audio_id = match.group(2)
                     owner_id = match.group(3)
+
+                    if not owner_id.startswith('-'):
+                        owner_id = '-' + owner_id
+
                     clear()
                     pro()
 
@@ -109,6 +113,7 @@ while True:
                         ["Audio ID", audio_id],
                         ["Owner ID", owner_id],
                     ]
+
 
                     table = tabulate(
                         data, tablefmt="rounded_grid", numalign="center", stralign="center"
