@@ -132,7 +132,7 @@ while True:
                     if img:
                         imageUrl = img["style"].split("'")[1]
                     RPC.update(
-                        details=f"Listening to: {artist + ' ' + title}",
+                        details=f"Listening to: {title + ' by ' + artist}",
                         state="In VKontakte",
                         large_image=imageUrl if imageUrl else DEFAULT_LARGE_IMAGE_URL,
                         small_image=DEFAULT_SMALL_IMAGE_URL,
