@@ -1,7 +1,7 @@
 # VkRPC
 
 A simple script to show VK music on Discord RPC, Простой скрипт для отображения музыки ВКонтакте в Discord RPC.
-
+Unlike most scripts, you dont need to mess around with VK bots and stuff, В отличие от большинства скриптов, вам не нужно возиться с ботами ВК и прочим.
 ![Example](/image/image.png?raw=true "Example")
 
 

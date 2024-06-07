@@ -69,7 +69,7 @@ def set_cmd_window_size(width, height):
     ctypes.windll.kernel32.SetConsoleWindowInfo(handle, True, ctypes.byref(rect))
 
 
-width, height = 43, 21
+width, height = 70, 21
 set_cmd_window_size(width, height)
 
 RPC = Presence(client_id="1184547216287862844")
@@ -121,8 +121,8 @@ while True:
                 )
 
                 if match:
-                    artist = match.group(4)
-                    title = match.group(1)
+                    artist = match.group(1)
+                    title = match.group(4)
                     duration = match.group(5)
                     audio_id = match.group(2)
                     owner_id = match.group(3)
